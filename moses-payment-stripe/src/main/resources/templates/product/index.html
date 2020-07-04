@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="zh">
+    <title>Stripe Checkout Sample</title>
+    <div th:replace="common/header::header"></div>
+    <script th:src="@{/js/example/product/script.js}" defer></script>
+    <script th:src="@{/js/components/i18next/i18next.js}"></script>
+</head>
+<body>
+<div class="sr-root">
+    <div th:replace="common/header::topbar"></div>
+
+    <div class="sr-main">
+        <header class="sr-header">
+            <div class="sr-header__logo"></div>
+        </header>
+        <section class="container">
+            <div>
+                <h1>Single photo</h1>
+                <h4>Purchase a Pasha original photo</h4>
+                <div class="pasha-image">
+                    <img src="https://picsum.photos/280/320?random=4"
+                         width="140"
+                         height="160"
+                    />
+                </div>
+            </div>
+            <div class="quantity-setter">
+                <button class="increment-btn" id="subtract" disabled>
+                    -
+                </button>
+                <input type="number" id="quantity-input" min="1" value="1"/>
+                <button class="increment-btn" id="add">+</button>
+            </div>
+            <p class="sr-legal-text">Number of copies (max 10)</p>
+
+            <button id="submit">Buy</button>
+        </section>
+        <div id="error-message"></div>
+    </div>
+</div>
+<div class="keep-bottom"></div>
+<div th:replace="common/footer::footer"></div>
+</body>
+</html>

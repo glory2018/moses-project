@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{common/layoutFile :: layout(~{::title},~{::section})}">
+<head>
+    <title>产品管理</title>
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">产品信息</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <a class="btn btn-primary" th:href="@{/product/toAdd}">添加</a>
+                    </div>
+                </div>
+                <div th:fragment="table_list" id="table_list">
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>产品名称</th>
+                            <th>最小年龄</th>
+                            <th>最大年龄</th>
+                            <th>所在地</th>
+                            <th>逾期</th>
+                            <th>征信白户</th>
+                            <th>营业执照</th>
+                            <th>营业执照年限</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tr th:each="product : ${page}">
+                            <td scope="row" th:text="${productStat.index+1}"></td>
+                            <td th:text="${product.productName}"></td>
+                            <td th:text="${product.minAge}"></td>
+                            <td th:text="${product.maxAge}"></td>
+                            <td th:text="${product.city}"></td>
+                            <td th:text="${product.overdue}"></td>
+                            <td th:text="${product.isCredit}"></td>
+                            <td th:text="${product.businessLicense}"></td>
+                            <td th:text="${product.businessLicensePeriod}"></td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-primary btn-sm" th:href="@{/product/toDetail(id=${product.id})}">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    查看
+                                </a>
+                                <a class="btn btn-info btn-sm" th:href="@{/product/toEdit(id=${product.id})}">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    编辑
+                                </a>
+                                <a class="btn btn-danger btn-sm" th:href="@{/product/delete(id=${product.id})}">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    删除
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div th:replace="common/pagebar::pagebar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<script th:src="@{/module/js/product/productList.js}"></script>

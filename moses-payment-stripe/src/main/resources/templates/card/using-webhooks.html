@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="zh">
+    <title>using-webhooks</title>
+    <div th:replace="common/header::header"></div>
+    <script th:src="@{/js/example/card/card.js}"></script>
+    <script th:src="@{/js/example/card/using.js}"></script>
+</head>
+<body>
+<div class="container body-up col-center-block">
+    <div th:replace="common/header::topbar"></div>
+    <div class="row" style="margin-top: 10px;">
+        <div th:replace="common/left::menu"></div>
+        <div class="col-xs-8" style="background-color: #F1F1F1;">
+            <div style="height: 35px;">
+                <div style="float: left;padding-top: 10px;" class="title_div">using-webhooks</div>
+            </div>
+            <div class="line"></div>
+            <div class="sr-root">
+                <div class="sr-main">
+                    <form id="payment-form" class="sr-payment-form">
+                        <div class="sr-combo-inputs-row">
+                            <div class="sr-input sr-card-element" id="card-element"></div>
+                        </div>
+                        <div class="sr-field-error" id="card-errors" role="alert"></div>
+                        <button id="submit-btn" style="display: none;">
+                            <div class="spinner hidden" id="spinner"></div>
+                            <span id="button-text">付款</span><span id="order-amount"></span>
+                        </button>
+                    </form>
+                    <div class="sr-result hidden">
+                        <p>Payment completed<br/></p>
+                        <pre><code></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="keep-bottom"></div>
+<div th:replace="common/footer::footer"></div>
+</body>
+</html>

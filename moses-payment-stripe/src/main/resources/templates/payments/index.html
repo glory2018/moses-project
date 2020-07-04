@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="zh">
+    <title>using-webhooks</title>
+    <div th:replace="common/header::header"></div>
+    <link rel="stylesheet" th:href="@{/css/example/card/card.css}">
+    <script th:src="@{/js/example/card/card.js}"></script>
+</head>
+<body>
+<div class="container body-up col-center-block">
+    <div th:replace="common/header::topbar"></div>
+    <div class="row" style="margin-top: 10px;">
+        <div th:replace="common/left::menu"></div>
+        <div class="col-xs-8" style="background-color: #F1F1F1;">
+            <div style="height: 35px;">
+                <div style="float: left;padding-top: 10px;" class="title_div">using-webhooks</div>
+            </div>
+            <div class="line"></div>
+            <!--Example 3-->
+            <div class="cell example example3" id="example-3">
+                <form>
+                    <div class="fieldset">
+                        <input id="example3-name" data-tid="elements_examples.form.name_label" class="field" type="text"
+                               placeholder="Name" required="" autocomplete="name">
+                        <input id="example3-email" data-tid="elements_examples.form.email_label"
+                               class="field half-width" type="email" placeholder="Email" required=""
+                               autocomplete="email">
+                        <input id="example3-phone" data-tid="elements_examples.form.phone_label"
+                               class="field half-width" type="tel" placeholder="Phone" required="" autocomplete="tel">
+                    </div>
+                    <div class="fieldset">
+                        <div id="example3-card-number" class="field empty"></div>
+                        <div id="example3-card-expiry" class="field empty third-width"></div>
+                        <div id="example3-card-cvc" class="field empty third-width"></div>
+                        <input id="example3-zip" data-tid="elements_examples.form.postal_code_placeholder"
+                               class="field empty third-width" placeholder="94107">
+                    </div>
+                    <button type="submit" data-tid="elements_examples.form.pay_button">Pay $25</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="keep-bottom"></div>
+<script th:src="@{/js/example/payment/index.js}"></script>
+<script th:src="@{/js/example/payment/payment.js}"></script>
+<div th:replace="common/footer::footer"></div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="zh">
+    <title>index</title>
+    <div th:replace="common/header::header"></div>
+</head>
+<body>
+<div class="container body-up col-center-block">
+    <div th:replace="common/header::topbar"></div>
+    <div class="row" style="margin-top: 10px;">
+        <div th:replace="common/left::menu"></div>
+        <div class="col-xs-8" style="background-color: #F1F1F1;">
+            <div style="height: 35px;">
+                <div style="float: left;padding-top: 10px;" class="title_div">index</div>
+                <!--                <div style="float: right;margin-right: 15px;padding-right: 15px;padding-top: 13px;font-size: 14px;line-height: 20px;color: #0066CC">-->
+                <!--                    显示部分-->
+                <!--                    <img class="img_righte" src=" /img/customer/basicInfo/up.png"/>-->
+                <!--                </div>-->
+            </div>
+            <div class="line"></div>
+        </div>
+    </div>
+</div>
+<div class="keep-bottom"></div>
+<div th:replace="common/footer::footer"></div>
+</body>
+</html>

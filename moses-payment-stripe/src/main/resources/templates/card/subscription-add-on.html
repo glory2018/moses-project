@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="zh">
+    <title>checkout-single-subscription</title>
+    <div th:replace="common/header::header"></div>
+    <script th:src="@{/js/example/card/subscription-add-on.js}"></script>
+
+</head>
+<body>
+<div class="container body-up col-center-block">
+    <div th:replace="common/header::topbar"></div>
+    <div class="sr-root">
+        <div class="sr-main">
+            <header class="sr-header">
+                <div class="sr-header__logo"></div>
+            </header>
+            <div class="sr-payment-summary payment-view">
+                <h1 class="order-amount">$14.00</h1>
+                <h4>per month subscription</h4>
+            </div>
+            <div class="sr-payment-form payment-view">
+                <label class="sr-checkbox-label">
+                    <input type="checkbox" name="subscribe" value="false" onchange="change(this.checked)">
+                    <span class="sr-checkbox-check"></span> Add limited edition Pasha e-book (+$3.00)</label>
+                <button id="submit" onclick="checkout(event)">Checkout</button>
+                <div class="sr-legal-text">
+                    Your card will be immediately charged <span class="order-total">$14.00</span> and then billed $14.00
+                    each month.
+                </div>
+            </div>
+        </div>
+        <div class="sr-content">
+            <div class="pasha-image-stack">
+                <img src="https://picsum.photos/280/320?random=1" width="140" height="160"/>
+                <img src="https://picsum.photos/280/320?random=2" width="140" height="160"/>
+                <img src="https://picsum.photos/280/320?random=3" width="140" height="160"/>
+                <img src="https://picsum.photos/280/320?random=4" width="140" height="160"/>
+            </div>
+        </div>
+    </div>
+    <div class="keep-bottom"></div>
+    <div th:replace="common/footer::footer"></div>
+</body>
+</html>

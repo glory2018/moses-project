@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/components/bootstrap.css}">
+    <!--    <link rel="stylesheet" th:href="@{/css/components/bootstrap-datetimepicker.css}">-->
+    <link rel="stylesheet" th:href="@{/css/example/style.css}">
+    <link rel="stylesheet" th:href="@{/css/example/card/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/example/card/global.css}">
+    <script th:src="@{/js/components/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/components/bootstrap.js}"></script>
+    <!--    <script th:src="@{/js/components/bootstrap-datetimepicker.min.js}"></script>-->
+    <!--    <script th:src="@{/js/components/echarts.min.js}"></script>-->
+    <!--    始终直接从js.stripe.com加载Stripe.js以保持PCI兼容性-->
+    <script src="https://js.stripe.com/v3"></script>
+    <script th:src="@{/js/example/common/common.js}"></script>
+    <script th:src="@{/js/example/common/date.js}"></script>
+
+</div>
+<div class="col-md-12 column header" th:fragment="topbar">
+    <ul class="list-inline">
+        <li><img src="/img/common/set.png"/></li>
+        <!--        <li style="width: 100%;"><p class="text-center" th:utext="${title}"></p></li>-->
+        <!--        <li style="float: right"><img src="/img/common/account.png"/></li>-->
+    </ul>
+</div>

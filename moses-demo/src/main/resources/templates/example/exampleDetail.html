@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{common/layoutFile :: layout(~{::title},~{::section})}">
+<head>
+    <title>客户管理</title>
+</head>
+<body>
+<!-- Main content -->
+<section class="content">
+    <div class="col-md-6">
+        <!-- general form elements disabled -->
+        <div class="box box-warning">
+            <div class="box-header">
+                <h3 class="box-title">基本信息</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" th:object="${example}">
+                <div class="form-group">
+                    <label>姓名</label>
+                    <p th:text="*{userName}"/>
+                </div>
+                <div class="form-group">
+                    <label>性别</label>
+                    <p th:text="*{sex}"/>
+                </div>
+                <div class="form-group">
+                    <label>年龄</label>
+                    <p th:text="*{age}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

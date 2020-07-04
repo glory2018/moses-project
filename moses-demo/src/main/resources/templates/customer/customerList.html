@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{common/layoutFile :: layout(~{::title},~{::section})}">
+<head>
+    <title>客户管理</title>
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">客户信息</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-4 form-label">当前状态</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control custom-select" id="currentState">
+                                            <option selected disabled>请选择</option>
+                                            <option value="待跟进">待跟进</option>
+                                            <option value="跟进中">跟进中</option>
+                                            <option value="已预约">已预约</option>
+                                            <option value="已上门">已上门</option>
+                                            <option value="待进件">待进件</option>
+                                            <option value="已进件">已进件</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-4 form-label">客户等级</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control custom-select" id="customerLevel">
+                                            <option selected disabled>请选择</option>
+                                            <option value="一星">一星</option>
+                                            <option value="二星">二星</option>
+                                            <option value="三星">三星</option>
+                                            <option value="四星">四星</option>
+                                            <option value="五星">五星</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-4 form-label"></label>
+                                    <div class="col-sm-8">
+                                        <a class="btn btn-default" onclick="pageRequest(0)">查询</a>
+                                        <a class="btn btn-default" th:href="@{/customer/toAdd}">添加</a>
+                                        <a class="btn btn-default" th:href="@{/customer/toImport}">导入</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div th:fragment="table_list" id="table_list">
+                    <!-- /.card-header -->
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>姓名</th>
+                            <th>当前状态</th>
+                            <th>客户归属</th>
+                            <th>客户等级</th>
+                            <th>客户来源</th>
+                            <th>添加时间</th>
+                            <th>最近跟进人</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="user : ${page}">
+                            <td scope="row" th:text="${userStat.index+1}"></td>
+                            <td th:text="${user.userName}"></td>
+                            <td th:text="${user.currentState}"></td>
+                            <td th:text="${user.customerOwnership}"></td>
+                            <td th:text="${user.customerLevel}"></td>
+                            <td th:text="${user.source}"></td>
+                            <td th:text="${user.addTime}"></td>
+                            <td th:text="${user.followers}"></td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-primary btn-sm" th:href="@{/customer/toDetail(id=${user.id})}">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    查看
+                                </a>
+                                <a class="btn btn-info btn-sm" th:href="@{/customer/toEdit(id=${user.id})}">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    编辑
+                                </a>
+                                <a class="btn btn-danger btn-sm" th:href="@{/customer/delete(id=${user.id})}">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    删除
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div th:replace="common/pagebar::pagebar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<script th:src="@{/module/js/customer/customerList.js}"></script>
