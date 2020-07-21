@@ -124,7 +124,7 @@ public class Product extends BaseEntity {
     @ApiModelProperty(value = "个人流水(万元)", example = "")
     private double personalDetailed;
     @Column
-    @ApiModelProperty(value = "个人流水(万元)", example = "")
+    @ApiModelProperty(value = "公司流水(万元)", example = "")
     private double companyDetailed;
     @Column
     @ApiModelProperty(value = "内容", example = "This is some sample content.")
