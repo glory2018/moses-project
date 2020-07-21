@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{common/layoutFile :: layout(~{::title},~{::section})}">
+<head>
+    <title>客户管理</title>
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <form role="form" th:action="@{/customer/add}" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">客户信息</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                        data-toggle="tooltip"
+                                        title="Collapse">
+                                    <i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- text input -->
+                            <div class="form-group">
+                                <label>姓名</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="userName" required/>
+                            </div>
+                            <!-- radio -->
+                            <div class="form-group">
+                                <label>性别</label>
+                                <select class="form-control custom-select" name="sex">
+                                    <option selected disabled>请选择</option>
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>身份证</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="identityCard"
+                                       minlength="15" maxlength="18"/>
+                            </div>
+                            <div class="form-group">
+                                <label>年龄</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..." name="age" value="0"
+                                       required/>
+                            </div>
+                            <div class="form-group">
+                                <label>民族</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="nation"/>
+                            </div>
+                            <div class="form-group">
+                                <label>联系电话</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..." name="tel"/>
+                            </div>
+                            <div class="form-group">
+                                <label>贷款金额(万)</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="loanAmount"
+                                       value="0"
+                                       required/>
+                            </div>
+                            <div class="form-group">
+                                <label>贷款期限(月)</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="loanTerm" value="0"
+                                       required/>
+                            </div>
+                            <div class="form-group">
+                                <label>意向产品</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="intendedProducts"/>
+                            </div>
+                            <div class="form-group">
+                                <label>客户归属</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="customerOwnership"/>
+                            </div>
+                            <div class="form-group">
+                                <label>客户等级</label>
+                                <select class="form-control custom-select" name="customerLevel">
+                                    <option selected disabled>请选择</option>
+                                    <option value="一星">一星</option>
+                                    <option value="二星">二星</option>
+                                    <option value="三星">三星</option>
+                                    <option value="四星">四星</option>
+                                    <option value="五星">五星</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>所在城市</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="city"/>
+                            </div>
+                            <div class="form-group">
+                                <label>当前状态</label>
+                                <select class="form-control custom-select" name="currentState">
+                                    <option selected disabled>请选择</option>
+                                    <option value="待跟进">待跟进</option>
+                                    <option value="跟进中">跟进中</option>
+                                    <option value="已预约">已预约</option>
+                                    <option value="已上门">已上门</option>
+                                    <option value="待进件">待进件</option>
+                                    <option value="已进件">已进件</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>客户来源</label>
+                                <select class="form-control custom-select" name="source">
+                                    <option selected disabled>请选择</option>
+                                    <option value="付费推广">付费推广</option>
+                                    <option value="线下获取">线下获取</option>
+                                    <option value="转介绍">转介绍</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>添加时间</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="addTime"/>
+                            </div>
+                            <div class="form-group">
+                                <label>最近跟进人</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="followers"/>
+                            </div>
+                            <div class="form-group">
+                                <label>最近跟进时间</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="followUpTime"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title"></h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                        data-toggle="tooltip"
+                                        title="Collapse">
+                                    <i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>信用卡、贷款是否逾期</label>
+                                <select class="form-control custom-select" name="overdue">
+                                    <option selected disabled>请选择</option>
+                                    <option value="是">是</option>
+                                    <option value="否">否</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>征信白户</label>
+                                <select class="form-control custom-select" name="isCredit">
+                                    <option selected disabled>请选择</option>
+                                    <option value="是">是</option>
+                                    <option value="否">否</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>营业执照</label>
+                                <select class="form-control custom-select" name="businessLicense">
+                                    <option selected disabled>请选择</option>
+                                    <option value="有">有</option>
+                                    <option value="无">无</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>营业执照年限</label>
+                                <input type="number" class="form-control" name="businessLicensePeriod" value="0"
+                                       required/>
+                            </div>
+                            <div class="form-group">
+                                <label>信贷余额(万元)</label>
+                                <input type="number" class="form-control" name="creditBalance" value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>信用卡已使用额度(万元)</label>
+                                <input type="number" class="form-control" name="creditUsedAmount" value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>信用卡总额度(万元)</label>
+                                <input type="number" class="form-control" name="creditTotal" value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>信用卡使用率</label>
+                                <input type="number" class="form-control" name="creditCardUsage" value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>负债(万元)</label>
+                                <input type="number" class="form-control" name="debts" value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>小贷笔数</label>
+                                <input type="number" class="form-control" name="smallLoansNum" value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>小贷余额(万元)</label>
+                                <input type="number" class="form-control" name="smallLoanBalance" value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>房产所在地</label>
+                                <input type="text" class="form-control" name="houseLocation"/>
+                            </div>
+                            <div class="form-group">
+                                <label>房屋类型</label>
+                                <select class="form-control custom-select" name="houseType">
+                                    <option selected disabled>请选择</option>
+                                    <option value="全款房">全款房</option>
+                                    <option value="月供房">月供房</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>房值(万元)</label>
+                                <input type="number" class="form-control" name="houseValue" value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>车类型</label>
+                                <select class="form-control custom-select" name="vehicleType">
+                                    <option selected disabled>请选择</option>
+                                    <option value="全款">全款</option>
+                                    <option value="按揭">按揭</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>车值(万元)</label>
+                                <input type="number" class="form-control" name="vehicleValue" value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>新单位工龄(月)</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..." name="lengthOfService"
+                                       value="0"
+                                       required/>
+                            </div>
+                            <div class="form-group">
+                                <label>薪资(元)</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..." name="salary" value="0"
+                                       required/>
+                            </div>
+                            <div class="form-group">
+                                <label>社保缴费时长(月)</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..."
+                                       name="socialSecurityTime"
+                                       value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>社保缴费基数(元)</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..."
+                                       name="socialSecurityAmount"
+                                       value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>公积金缴费时长(月)</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..."
+                                       name="accumulationFundTime"
+                                       value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>公积金缴费基数(元)</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..."
+                                       name="accumulationFundAmount"
+                                       value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>公积金个缴(元)</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..."
+                                       name="accumulationFundIndividual" value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>微利贷(万元)</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..." name="lowProfitLoan"
+                                       value="0"
+                                       required/>
+                            </div>
+                            <div class="form-group">
+                                <label>个人流水(万元)</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..." name="personalDetailed"
+                                       value="0" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>公司流水(万元)</label>
+                                <input type="number" class="form-control" placeholder="请输入 ..." name="companyDetailed"
+                                       value="0"
+                                       required/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <input type="reset" value="重置" class="btn btn-secondary">
+                    <input type="submit" value="提交" class="btn btn-success float-right">
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<script th:src="@{/module/js/customer/customer.js}"></script>
+</body>
+</html>

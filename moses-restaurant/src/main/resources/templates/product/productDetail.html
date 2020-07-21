@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{common/layoutFile :: layout(~{::title},~{::section})}">
+<head>
+    <title>产品管理</title>
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">产品信息</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body" th:object="${product}">
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <b>产品名称</b>
+                                <p class="float-right" th:text="*{productName}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>最小年龄</b>
+                                <p class="float-right" th:text="*{minAge}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>最大年龄</b>
+                                <p class="float-right" th:text="*{maxAge}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>民族</b>
+                                <p class="float-right" th:text="*{nation}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>所在城市</b>
+                                <p class="float-right" th:text="*{city}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>信用卡、贷款是否逾期</b>
+                                <p class="float-right" th:text="*{overdue}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>征信白户</b>
+                                <p class="float-right" th:text="*{isCredit}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>营业执照</b>
+                                <p class="float-right" th:text="*{businessLicense}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>营业执照年限</b>
+                                <p class="float-right" th:text="*{businessLicensePeriod}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>信贷余额(万元)</b>
+                                <p class="float-right" th:text="*{creditBalance}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>信用卡已使用额度(万元)</b>
+                                <p class="float-right" th:text="*{creditUsedAmount}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>信用卡总额度(万元)</b>
+                                <p class="float-right" th:text="*{creditTotal}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>信用卡使用率</b>
+                                <p class="float-right" th:text="*{creditCardUsage}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>负债(万元)</b>
+                                <p class="float-right" th:text="*{debts}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>小贷笔数</b>
+                                <p class="float-right" th:text="*{smallLoansNum}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>小贷余额(万元)</b>
+                                <p class="float-right" th:text="*{smallLoanBalance}"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">产品信息</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body" th:object="${product}">
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <b>房产所在地</b>
+                                <p class="float-right" th:text="*{houseLocation}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>房屋类型</b>
+                                <p class="float-right" th:text="*{houseType}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>房值(万元)</b>
+                                <p class="float-right" th:text="*{houseValue}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>车类型</b>
+                                <p class="float-right" th:text="*{vehicleType}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>车值(万元)</b>
+                                <p class="float-right" th:text="*{vehicleValue}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>新单位工龄(月)</b>
+                                <p class="float-right" th:text="*{lengthOfService}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>薪资(元)</b>
+                                <p class="float-right" th:text="*{salary}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>社保缴费时长(月)</b>
+                                <p class="float-right" th:text="*{socialSecurityTime}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>社保缴费基数(元)</b>
+                                <p class="float-right" th:text="*{socialSecurityAmount}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>公积金缴费时长(月)</b>
+                                <p class="float-right" th:text="*{accumulationFundAmount}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>公积金缴费基数(元)</b>
+                                <p class="float-right" th:text="*{accumulationFundAmount}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>公积金个缴(元)</b>
+                                <p class="float-right" th:text="*{accumulationFundIndividual}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>微利贷(万元)</b>
+                                <p class="float-right" th:text="*{lowProfitLoan}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>个人流水(万元)</b>
+                                <p class="float-right" th:text="*{personalDetailed}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>公司流水(万元)</b>
+                                <p class="float-right" th:text="*{companyDetailed}"></p>
+                            </li>
+                            <div th:utext="*{content}"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

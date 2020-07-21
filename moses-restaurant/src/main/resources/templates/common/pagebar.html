@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="pagebar" class="box-footer clearfix">
+    <ul class="pagination pagination-sm m-0 float-right">
+        <!--上一页数-->
+        <li class="page-item" th:if="${page.pageable.getPageNumber() != 0}">
+            <a th:onclick="pageRequest([[${page.pageable.getPageNumber()-1}]])" class="page-link"
+               data-th-attr="pageIndex=${page.number} - 1" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+            </a>
+        </li>
+        <li class="page-item">
+            <a th:onclick="pageRequest(0)" class="page-link">首页</a>
+        </li>
+        <!--前五后四分页实现-->
+        <!--总页数<10-->
+        <li th:if="${page.totalPages lt 11}" class="page-item"
+            data-th-each="i : ${#numbers.sequence(0, page.totalPages-1)}"
+            data-th-classappend="${(page.number ) eq i} ? 'active' : ''">
+            <a class="page-link" th:onclick="pageRequest([[${i}]])">
+                <span data-th-text="${i+1}"></span>
+            </a>
+        </li>
+        <!--总页数>10-->
+        <li th:if="${page.totalPages gt 10 && page.pageable.getPageNumber() lt 5}" class="page-item"
+            data-th-each="i : ${#numbers.sequence(0, 9)}"
+            data-th-classappend="${(page.number ) eq i} ? 'active' : ''">
+            <a class="page-link" th:onclick="pageRequest([[${i}]])">
+                <span data-th-text="${i+1}"></span>
+            </a>
+        </li>
+        <li th:if="${page.totalPages gt 10 && page.pageable.getPageNumber() gt 4 && page.totalPages lt page.pageable.getPageNumber()+5  }"
+            class="page-item"
+            data-th-each="i : ${#numbers.sequence(page.totalPages-10, page.totalPages-1)}"
+            data-th-classappend="${(page.number ) eq i} ? 'active' : ''">
+            <a class="page-link" th:onclick="pageRequest([[${i}]])">
+                <span data-th-text="${i+1}"></span>
+            </a>
+        </li>
+        <li th:if="${page.totalPages gt 10 && page.pageable.getPageNumber() gt 4 && page.pageable.getPageNumber()+4 lt page.totalPages}"
+            class="page-item"
+            data-th-each="i : ${#numbers.sequence(page.pageable.getPageNumber()-5, page.pageable.getPageNumber()+4)}"
+            data-th-classappend="${(page.number ) eq i} ? 'active' : ''">
+            <a class="page-link" th:onclick="pageRequest([[${i}]])">
+                <span data-th-text="${i+1}"></span>
+            </a>
+        </li>
+        <!--尾页-->
+        <li class="page-item">
+            <a th:onclick="pageRequest([[${page.getTotalPages() - 1}]])" class="page-link">尾页</a>
+        </li>
+        <!--下一页-->
+        <li class="page-item" th:if="${page.pageable.pageNumber} != ${page.totalPages}-1">
+            <a class="page-link" th:onclick="pageRequest([[${page.pageable.pageNumber}+1]])">
+                »
+            </a>
+        </li>
+    </ul>
+</div>
