@@ -1,8 +1,8 @@
 package com.moses.stripe.controller.stripe;
 
+import com.moses.framework.common.base.BaseResponse;
 import com.moses.stripe.common.Constant;
-import com.moses.stripe.config.BaseController;
-import com.moses.stripe.config.BaseResponse;
+import com.moses.framework.common.base.BaseController;
 import com.moses.stripe.param.PaymentRequest;
 import com.stripe.Stripe;
 import com.stripe.exception.SignatureVerificationException;

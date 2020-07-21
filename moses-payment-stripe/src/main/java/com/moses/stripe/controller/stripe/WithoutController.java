@@ -1,7 +1,7 @@
 package com.moses.stripe.controller.stripe;
 
 import com.moses.stripe.common.Constant;
-import com.moses.stripe.config.BaseController;
+import com.moses.framework.common.base.BaseController;
 import com.moses.stripe.param.PaymentRequest;
 import com.stripe.Stripe;
 import com.stripe.model.PaymentIntent;

@@ -1,6 +1,6 @@
 package com.moses.stripe.controller.stripe;
 
-import com.moses.stripe.config.BaseController;
+import com.moses.framework.common.base.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springfox.documentation.annotations.ApiIgnore;

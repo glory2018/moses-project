@@ -29,7 +29,6 @@
     <modules>
         <module>moses-demo</module>
         <module>moses-payment-stripe</module>
-        <module>moses-restaurant</module>
     </modules>
     <dependencies>
         <!--引入web依赖,可以使用@RequestMapping，@RestController等注解-->
