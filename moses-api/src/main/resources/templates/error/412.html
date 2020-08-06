@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header::layout(~{::title})">
+    <title>参数错误</title>
+</head>
+<body>
+<h3>对不起，提交参数不符合要求！</h3>
+<table class="table table-striped projects">
+    <tr th:each="item,userStat:${errors}">
+        <td th:text="${userStat.index}+1"></td>
+        <td th:text="${userStat.current.key}"></td><!-- key-->
+        <td th:text="${userStat.current.value}"></td><!-- value-->
+    </tr>
+</table>
+<a href="/index">返回首页</a>
+</body>
+</html>

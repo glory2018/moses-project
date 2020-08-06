@@ -40,4 +40,23 @@
             <version>${stripe-java.version}</version>
         </dependency>
     </dependencies>
+    <!-- 编译插件（可在编译插件中设计java的编译级别）-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--<configuration>-->
+                <!--<mainClass>org.supwisdom.Application</mainClass>-->
+                <!--</configuration>-->
+            </plugin>
+        </plugins>
+    </build>
 </project>

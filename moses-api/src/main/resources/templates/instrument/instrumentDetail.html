@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{common/layoutFile :: layout(~{::title},~{::section})}">
+<head>
+    <title>仪器管理</title>
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">仪器信息</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body" th:object="${instrument}">
+                        <input type="hidden" name="id" th:value="*{id}"/>
+                        <dl class="row">
+                            <dt class="col-sm-4">仪器编号</dt>
+                            <dd class="col-sm-8" th:text="*{instrumentCode}"></dd>
+                            <dt class="col-sm-4">仪器名称</dt>
+                            <dd class="col-sm-8" th:text="*{instrumentName}"></dd>
+                            <dt class="col-sm-4">实验室编号</dt>
+                            <dd class="col-sm-8" th:text="*{laboratoryCode}"></dd>
+                            <dt class="col-sm-4">购买日期</dt>
+                            <dd class="col-sm-8" th:text="*{purchaseDate}"></dd>
+                            <dt class="col-sm-4">仪器照片</dt>
+                            <dd class="col-sm-8" th:if="${instrument.photos} != null">
+                                <span th:each="photo: ${instrument.photos}">
+                                    <img th:src="${photo.photoPath}" style="height: 100px;width: 200px;"/>
+                                </span>
+                            </dd>
+                            <dt class="col-sm-4">仪器管理员</dt>
+                            <dd class="col-sm-8" th:text="*{instrumentAdmin}"></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<script th:src="@{/module/js/instrument/instrumentDetail.js}"></script>

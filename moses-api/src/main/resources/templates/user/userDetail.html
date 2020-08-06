@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{common/layoutFile :: layout(~{::title},~{::section})}">
+<head>
+    <title>用户管理</title>
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">用户信息</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body" th:object="${user}">
+                        <input type="hidden" name="id" th:value="*{id}"/>
+                        <dl class="row">
+                            <dt class="col-sm-4">工号</dt>
+                            <dd class="col-sm-8" th:text="*{userCode}"></dd>
+                            <dt class="col-sm-4">姓名</dt>
+                            <dd class="col-sm-8" th:text="*{userName}"></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

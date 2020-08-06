@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{common/layoutFile :: layout(~{::title},~{::section})}">
+<head>
+    <title>实验室管理</title>
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">实验室信息</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-4 form-label"></label>
+                                <div class="col-sm-8">
+                                    <a class="btn btn-default" onclick="pageRequest(0)">查询</a>
+                                    <a class="btn btn-default" th:href="@{/laboratory/toAdd}">添加</a>
+                                    <a class="btn btn-default" th:href="@{/laboratory/toImport}">导入</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div th:fragment="table_list" id="table_list">
+                    <!-- /.card-header -->
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>实验室编号</th>
+                            <th>实验室名称</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="laboratory : ${page}">
+                            <td scope="row" th:text="${laboratoryStat.index+1}"></td>
+                            <td th:text="${laboratory.laboratoryCode}"></td>
+                            <td th:text="${laboratory.laboratoryName}"></td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-primary btn-sm"
+                                   th:href="@{/laboratory/toDetail(id=${laboratory.id})}">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    查看
+                                </a>
+                                <a class="btn btn-info btn-sm" th:href="@{/laboratory/toEdit(id=${laboratory.id})}">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    编辑
+                                </a>
+                                <a class="btn btn-danger btn-sm" th:href="@{/laboratory/delete(id=${laboratory.id})}">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    删除
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div th:replace="common/pagebar::pagebar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<script th:src="@{/module/js/laboratory/laboratoryList.js}"></script>

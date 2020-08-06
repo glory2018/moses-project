@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title)">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:replace="${title}">仪器管理系统</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/adminlte/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/adminlte/dist/css/adminlte.min.css}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/module/css/style.css}">
+</head>
+<body class="skin-blue">
+<!-- jQuery -->
+<script th:src="@{/adminlte/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- bs-custom-file-input -->
+<script th:src="@{/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/adminlte/dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{/adminlte/dist/js/demo.js}"></script>
+</body>
+</html>

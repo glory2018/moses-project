@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{common/layoutFile :: layout(~{::title},~{::section})}">
+<head>
+    <title>仪器管理</title>
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <form role="form" th:action="@{/instrument/edit}" method="post" th:object="${instrument}"
+              enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">仪器信息</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                        data-toggle="tooltip"
+                                        title="Collapse">
+                                    <i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <input type="hidden" name="id" th:value="*{id}"/>
+                            <div class="form-group">
+                                <label>仪器编号</label>
+                                <input type="text" class="form-control" th:value="*{instrumentCode}"
+                                       name="instrumentCode"/>
+                            </div>
+                            <div class="form-group">
+                                <label>仪器名称</label>
+                                <input type="text" class="form-control" th:value="*{instrumentName}"
+                                       name="instrumentName" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>实验室编号</label>
+                                <select class="form-control" id="laboratoryCode" name="laboratoryCode">
+                                    <option value="">请选择</option>
+                                    <option th:each="laboratory : ${laboratorys}"
+                                            th:selected="${instrument.laboratoryCode eq laboratory.laboratoryCode}"
+                                            th:value="${laboratory.laboratoryCode}"
+                                            th:text="${laboratory.laboratoryName}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>购买日期</label>
+                                <input type="text" class="form-control" th:value="*{purchaseDate}" name="purchaseDate"
+                                       id="purchaseDate" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>仪器照片</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="exampleInputFile" name="files"
+                                           accept="image/png, image/jpeg"
+                                           multiple="multiple">
+                                    <label class="custom-file-label" for="exampleInputFile">选择文件</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>仪器管理员</label>
+                                <p>
+                                    <input type="checkbox" name="instrumentAdmin"
+                                           th:each="user : ${users}"
+                                           th:value="${user.userCode}"
+                                           th:text="${user.userName}"
+                                           th:attr="checked=${instrument.instrumentAdmin!=null&&instrument.instrumentAdmin.contains(user.userCode)?true:false}">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <input type="reset" value="重置" class="btn btn-secondary">
+                    <input type="submit" value="提交" class="btn btn-success float-right">
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>
+<script th:src="@{/module/js/instrument/instrumentEdit.js}"></script>

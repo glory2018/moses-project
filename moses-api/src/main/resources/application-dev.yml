@@ -1,0 +1,46 @@
+spring:
+  moses:
+    name: 王者归来
+    region: 北京
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://39.105.42.74:3306/moses?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+    username: moses
+    password: 123456
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 10485760 #单个文件10M
+      max-request-size: 104857600 #单次文件100M
+#  redis:
+#    host: localhost
+#    port: 6379
+#    timeout: 5000
+#    jedis:
+#      pool:
+#        max-idle: 8
+#        min-idle: 0
+#        max-active: 8
+#        max-wait: -1
+#    database: 6
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+#    connection-timeout: 60000
+file:
+  #上传的文件对外暴露的访问路径
+  access-path-pattern: /u/**
+  #文件上传目录
+  upload-folder: /var/opt/file
+  #文件预览、下载的绝对路径
+  access-prefix-url: http://localhost:8080/u
+

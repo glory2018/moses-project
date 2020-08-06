@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{common/layoutFile :: layout(~{::title},~{::section})}">
+<head>
+    <title>统计管理</title>
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">数据统计</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form role="form" th:action="@{/statistics/continued}" method="post"
+                              enctype="multipart/form-data">
+                            <!-- text input -->
+                            <div class="form-group">
+                                <label>分组</label>
+                                <input type="text" class="form-control" placeholder="请输入 ..." name="group"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">导入数据</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="exampleInputFile" name="file">
+                                        <label class="custom-file-label" for="exampleInputFile">选择文件</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>输入数据</label>
+                                <textarea class="form-control" name="data" placeholder="请输入 ..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="reset" value="重置" class="btn btn-secondary">
+                                <input type="submit" value="统计" class="btn btn-success float-right">
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <b>状态</b>
+                                <p class="float-right" id="status" th:text="${map?.status}"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>次数</b>
+                                <p class="float-right" id="content" th:text="${map?.content}"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<script th:src="@{/module/js/statistics/statisticsContinued.js}"></script>

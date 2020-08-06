@@ -1,0 +1,3 @@
+$(function () {
+    $("[role='form']").validate();
+})
